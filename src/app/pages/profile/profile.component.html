@@ -1,12 +1,12 @@
 <div class="profileDiv">
   <form (ngSubmit)="onChangePressed()" [formGroup]="changeFormGroup" class="changeForm">
     <mat-form-field>
-      <mat-error>
-        <div *ngIf="this.changeFormGroup.get('text')?.dirty" class="form-errors">
-          <p *ngIf="this.changeFormGroup.get('text')?.hasError('required')">A new name cannot be empty!</p>
-          <p *ngIf="this.errorMessage != ''">{{this.errorMessage}}</p>
-        </div>
-      </mat-error>
+      <div *ngIf="this.changeFormGroup.get('text')?.dirty" class="form-errors">
+        <p *ngIf="this.changeFormGroup.get('text')?.hasError('required')">A new name cannot be empty!</p>
+        <p *ngIf="this.changeFormGroup.get('text')?.hasError('minlength')">
+          A new username must be at least 3 characters long
+        </p>
+      </div>
       <input type="text" name="text" placeholder="{{this.user.username}}" formControlName="newUsername" matInput>
     </mat-form-field>
 

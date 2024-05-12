@@ -12,11 +12,9 @@
 
 <form (ngSubmit)="onCreatePressed()" [formGroup]="createCommentFormGroup" *ngIf="isLoggedIn" class="commentForm">
   <mat-form-field>
-    <mat-error>
-      <div *ngIf="this.createCommentFormGroup.get('text')?.dirty" class="form-errors">
-        <p *ngIf="this.createCommentFormGroup.get('text')?.hasError('required')">A comment cannot be empty!</p>
-      </div>
-    </mat-error>
+    <div *ngIf="this.createCommentFormGroup.get('text')?.dirty" class="form-errors">
+      <p *ngIf="this.createCommentFormGroup.get('text')?.hasError('required')">A comment cannot be empty!</p>
+    </div>
     <textarea type="text" name="text" placeholder="Your comment" formControlName="text" matInput rows="4"></textarea>
   </mat-form-field>
 

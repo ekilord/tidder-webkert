@@ -7,49 +7,44 @@
   <form (ngSubmit)="onRegisterPressed()" class="register-form" [formGroup]="signUpFormGroup">
 
     <mat-form-field>
-      <mat-error>
-        <div *ngIf="signUpFormGroup.get('username')?.dirty" class="form-errors">
-          <p *ngIf="signUpFormGroup.get('username')?.hasError('required')">The username field is mandatory</p>
-          <p *ngIf="signUpFormGroup.get('username')?.hasError('exists')">This username is being used</p>
-        </div>
-      </mat-error>
+      <div *ngIf="signUpFormGroup.get('username')?.dirty" class="form-errors">
+        <p *ngIf="signUpFormGroup.get('username')?.hasError('required')">The username field is mandatory</p>
+        <p *ngIf="signUpFormGroup.get('username')?.hasError('minlength')">
+          The username must be at least 3 characters long
+        </p>
+        <p *ngIf="signUpFormGroup.get('username')?.hasError('exists')">This username is being used</p>
+      </div>
       <input placeholder="Username" name="username" formControlName="username" matInput>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-error>
-        <div *ngIf="signUpFormGroup.get('email')?.dirty" class="form-errors">
-          <p *ngIf="signUpFormGroup.get('email')?.hasError('required')">The e-mail field is mandatory</p>
-          <p *ngIf="signUpFormGroup.get('email')?.hasError('email')">This e-mail is invalid</p>
-          <p *ngIf="signUpFormGroup.get('email')?.hasError('exists')">This e-mail is being used already</p>
-        </div>
-      </mat-error>
+      <div *ngIf="signUpFormGroup.get('email')?.dirty" class="form-errors">
+        <p *ngIf="signUpFormGroup.get('email')?.hasError('required')">The e-mail field is mandatory</p>
+        <p *ngIf="signUpFormGroup.get('email')?.hasError('email')">This e-mail is invalid</p>
+        <p *ngIf="signUpFormGroup.get('email')?.hasError('exists')">This e-mail is being used already</p>
+      </div>
       <input placeholder="E-mail" name="email" formControlName="email" matInput>
     </mat-form-field>
 
     <div formGroupName="passwordsFormGroup">
       <mat-form-field>
-        <mat-error>
-          <div *ngIf="signUpFormGroup.get('passwordsFormGroup.password')?.dirty" class="form-errors">
-            <p *ngIf="signUpFormGroup.get('passwordsFormGroup.password')?.hasError('required')">
-              The password field is mandatory
-            </p>
-            <p *ngIf="signUpFormGroup.get('passwordsFormGroup.password')?.hasError('minlength')">
-              The password must be at least 8 characters long
-            </p>
-          </div>
-        </mat-error>
+        <div *ngIf="signUpFormGroup.get('passwordsFormGroup.password')?.dirty" class="form-errors">
+          <p *ngIf="signUpFormGroup.get('passwordsFormGroup.password')?.hasError('required')">
+            The password field is mandatory
+          </p>
+          <p *ngIf="signUpFormGroup.get('passwordsFormGroup.password')?.hasError('minlength')">
+            The password must be at least 8 characters long
+          </p>
+        </div>
         <input type="password" placeholder="Password" name="password" formControlName="password" matInput>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-error>
-          <div *ngIf="signUpFormGroup.get('passwordsFormGroup.confirmPassword')?.dirty" class="form-errors">
-            <p *ngIf="signUpFormGroup.get('passwordsFormGroup.confirmPassword')?.hasError('passwordMismatch')">
-              The passwords do not match
-            </p>
-          </div>
-        </mat-error>
+        <div *ngIf="signUpFormGroup.get('passwordsFormGroup.confirmPassword')?.dirty" class="form-errors">
+          <p *ngIf="signUpFormGroup.get('passwordsFormGroup.confirmPassword')?.hasError('passwordMismatch')">
+            The passwords do not match
+          </p>
+        </div>
         <input type="password" placeholder="Confirm Password" name="confirmPassword"
                formControlName="confirmPassword" matInput>
       </mat-form-field>

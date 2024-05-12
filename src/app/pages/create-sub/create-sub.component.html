@@ -6,19 +6,15 @@
   </mat-card>
   <form (ngSubmit)="onCreatePressed()" [formGroup]="createSubFormGroup">
     <mat-form-field>
-      <mat-error>
-        <div *ngIf="this.createSubFormGroup.get('name')?.dirty" class="form-errors">
-          <p *ngIf="this.createSubFormGroup.get('name')?.hasError('required')">The name field is mandatory!</p>
-        </div>
-      </mat-error>
+      <div *ngIf="this.createSubFormGroup.get('name')?.dirty" class="form-errors">
+        <p *ngIf="this.createSubFormGroup.get('name')?.hasError('required')">The name field is mandatory!</p>
+      </div>
       <input type="text" name="name" placeholder="Name" formControlName="name" matInput>
     </mat-form-field>
     <mat-form-field>
-      <mat-error>
-        <div *ngIf="this.createSubFormGroup.get('desc')?.dirty" class="form-errors">
-          <p *ngIf="this.createSubFormGroup.get('desc')?.hasError('required')">The description field is mandatory!</p>
-        </div>
-      </mat-error>
+      <div *ngIf="this.createSubFormGroup.get('desc')?.dirty" class="form-errors">
+        <p *ngIf="this.createSubFormGroup.get('desc')?.hasError('required')">The description field is mandatory!</p>
+      </div>
       <input type="text" name="desc" placeholder="Description" formControlName="desc" matInput>
     </mat-form-field>
 

@@ -2,7 +2,7 @@ import {Component, Injectable, OnInit} from '@angular/core';
 import {NgIf, NgStyle} from "@angular/common";
 import {AuthService} from "../../services/auth.service";
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {MatToolbar} from "@angular/material/toolbar";
+import {MatToolbar, MatToolbarRow} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,8 @@ import {MatToolbar} from "@angular/material/toolbar";
     RouterLink,
     RouterLinkActive,
     MatToolbar,
-    NgStyle
+    NgStyle,
+    MatToolbarRow
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
