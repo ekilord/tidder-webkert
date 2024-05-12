@@ -73,14 +73,14 @@ export class DataService {
 
   async checkSubExists(name: string): Promise<boolean> {
     return new Promise(async (resolve, reject) => {
-      const subsRef = collection(this.firestore.firestore, "subs");
-      const subsQuery = query(subsRef, where('name', '==', name));
-      const querySnapshot = await getDocs(subsQuery);
-
+      const subsRef = collection(this.firestore.firestore, 'subs');
+      const subQuery = query(subsRef, where('name', '==', name));
+      const querySnapshot = await getDocs(subQuery);
       if (querySnapshot.docs.length > 0) {
         resolve(true);
+      } else {
+        resolve(false);
       }
-      else reject();
     });
   }
 

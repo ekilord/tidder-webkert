@@ -58,6 +58,7 @@ export class CreateSubComponent {
     if (this.createSubFormGroup.get('name')?.invalid || this.createSubFormGroup.get('desc')?.invalid)
       return;
 
+    console.log("siker")
     await this.data.uploadSub({ name: this.createSubFormGroup.get('name')?.value,
       desc: this.createSubFormGroup.get('desc')?.value });
 
