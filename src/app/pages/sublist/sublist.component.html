@@ -2,7 +2,7 @@
   <mat-card-title>
     List of Subforums
   </mat-card-title>
-  <button mat-stroked-button [ngStyle]="{'width': '10%' }" routerLink="/create-sub">Create New Sub</button>
+  <button *ngIf="isLoggedIn" mat-stroked-button [ngStyle]="{'width': '10%' }" routerLink="/create-sub">Create New Sub</button>
 </mat-card>
 <mat-card *ngFor="let sub of subs" routerLink="/{{sub.name}}" class="subListList">
   <mat-card-title>
