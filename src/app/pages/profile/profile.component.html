@@ -1,6 +1,17 @@
-<p>
-  {{user.username}}
-</p>
-<p>
-  {{user.email}}
-</p>
+<div class="profileDiv">
+  <form (ngSubmit)="onChangePressed()" [formGroup]="changeFormGroup" class="changeForm">
+    <mat-form-field>
+      <mat-error>
+        <div *ngIf="this.changeFormGroup.get('text')?.dirty" class="form-errors">
+          <p *ngIf="this.changeFormGroup.get('text')?.hasError('required')">A new name cannot be empty!</p>
+          <p *ngIf="this.errorMessage != ''">{{this.errorMessage}}</p>
+        </div>
+      </mat-error>
+      <input type="text" name="text" placeholder="{{this.user.username}}" formControlName="newUsername" matInput>
+    </mat-form-field>
+
+    <button mat-flat-button>Change</button>
+  </form>
+  <button mat-raised-button (click)="onDeletePressed()">Delete Profile</button>
+</div>
+

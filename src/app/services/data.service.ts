@@ -2,10 +2,20 @@ import { Injectable } from '@angular/core';
 import {catchError, from, map, mergeMap, Observable, of} from "rxjs";
 import { User } from '../models/User';
 import { Sub } from '../models/Sub';
-import {AngularFirestore, CollectionReference} from "@angular/fire/compat/firestore";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Post} from "../models/Post";
 import {Comment} from "../models/Comment";
-import {collection, collectionData, getDocs, limit, query, where} from "@angular/fire/firestore";
+import {
+  collection,
+  collectionData, deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+  limit,
+  query,
+  updateDoc,
+  where
+} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -122,5 +132,46 @@ export class DataService {
     const subPostsRef = collection(this.firestore.firestore, 'subs', subName, 'posts');
     const topPostsQuery = query(subPostsRef, limit(10));
     return collectionData(topPostsQuery, { idField: 'id' }) as Observable<Post[]>;
+  }
+
+  changeUsername(oldName: string, newName: string): Promise<boolean> {
+    return new Promise(async (resolve, reject) => {
+      const existingUserRef = doc(this.firestore.firestore, "users", newName);const existingUserDoc = await getDoc(existingUserRef);
+      if (existingUserDoc.exists()) {
+        reject("Username already exists");
+      }
+
+      const userRef = collection(this.firestore.firestore, "users");
+      const userQuery = query(userRef, where('username', '==', oldName));
+      const querySnapshot = await getDocs(userQuery);
+
+      if (querySnapshot.docs.length === 0) {
+        reject("User not found");
+      }
+
+      const userDoc = querySnapshot.docs[0]; // Assuming only one user with old name
+      await updateDoc(userDoc.ref, { username: newName });
+
+      resolve(true);
+    });
+  }
+
+  deleteUser(username: string): Promise<boolean> {
+    return new Promise(async (resolve, reject) => {
+      const userRef = collection(this.firestore.firestore, 'users');
+      const userQuery = query(userRef, where('username', '==', username));
+      const querySnapshot = await getDocs(userQuery);
+
+      if (querySnapshot.docs.length === 0) {
+        reject();
+      }
+
+      const userDoc = querySnapshot.docs[0];
+      const documentId = userDoc.id;
+
+      deleteDoc(doc(this.firestore.firestore, 'users', documentId)).then(() => {
+        resolve(true);
+      }).catch(error => {reject(error); });
+    });
   }
 }

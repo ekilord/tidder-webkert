@@ -1,0 +1,16 @@
+.profileDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5% 15%;
+}
+
+.profileDiv form {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-bottom: 35%;
+}
