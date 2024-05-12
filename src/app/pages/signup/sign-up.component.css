@@ -1,0 +1,31 @@
+.signUpDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5% 15%;
+}
+
+.signUpTitle {
+  width: 35%;
+  text-align: center;
+  margin: 2%;
+  color: #F2FDFF;
+  padding: 1%;
+}
+
+.signUpDiv form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signUpDiv form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  margin: 2%;
+}

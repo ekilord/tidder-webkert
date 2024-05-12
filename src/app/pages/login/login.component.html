@@ -1,0 +1,29 @@
+<div class="loginDiv">
+  <mat-card class="loginTitle">
+    <mat-card-title>
+      Login
+    </mat-card-title>
+  </mat-card>
+  <form (ngSubmit)="onLoginPressed()" [formGroup]="loginFormGroup">
+    <div *ngIf="this.loginFormGroup.get('email')?.dirty" class="form-errors">
+      <p *ngIf="this.loginFormGroup.get('email')?.hasError('required')">The e-mail field is mandatory</p>
+    </div>
+    <mat-form-field>
+      <input type="email" name="email" placeholder="E-mail" formControlName="email" matInput>
+    </mat-form-field>
+
+    <div *ngIf="this.loginFormGroup.get('password')?.dirty" class="form-errors">
+      <p *ngIf="this.loginFormGroup.get('password')?.hasError('required')">The password field is mandatory</p>
+    </div>
+    <mat-form-field>
+      <input type="password" name="password" placeholder="Password" formControlName="password" matInput>
+    </mat-form-field>
+
+    <div *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
+    <button mat-raised-button>Login</button>
+  </form>
+
+  <button routerLink="/signup" mat-raised-button>Sign Up</button>
+</div>

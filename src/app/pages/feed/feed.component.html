@@ -1,0 +1,11 @@
+<mat-card *ngFor="let post of topPosts" routerLink="/{{ post.parent }}/{{ post.id }}" class="feedPostList">
+  <mat-card-title>
+    {{ post.title }}
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{ post.author }}
+  </mat-card-subtitle>
+  <mat-card-content>
+    {{ post.desc }}
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,12 @@
+.subListTitle {
+  margin: 2%;
+  padding: 1%;
+}
+
+.subListList {
+  display: flex;
+  flex-direction: column;
+  margin: 2% 3%;
+  padding: 1%;
+  color: #F2FDFF;
+}

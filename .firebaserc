@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tidder-forum": {
+      "hosting": {
+        "tidder": [
+          "tidder-forum"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tidder-forum"
+  }
+}

@@ -1,0 +1,13 @@
+body {
+  all: unset;
+  background-color: #F2FDFF;
+  font-family: Ubuntu Sans, sans-serif;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

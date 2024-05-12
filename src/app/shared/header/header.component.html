@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <div class="header_title" [ngStyle]="{'color': isLoggedIn ? 'indianred' : 'white' }">
+    tidder
+  </div>
+  <div class="header_menu">
+    <a routerLink="/feed" routerLinkActive="current" class="header_menu_element">Feed</a>
+    <a routerLink="/sublist" routerLinkActive="current" class="header_menu_element">List of Subs</a>
+    <a routerLink="/login" routerLinkActive="current" class="header_menu_element" *ngIf="!isLoggedIn">Login</a>
+    <a routerLink="/profile" routerLinkActive="current" class="header_menu_element" *ngIf="isLoggedIn">Profile</a>
+    <a (click)="logout()" class="header_menu_element" *ngIf="isLoggedIn">Logout</a>
+  </div>
+
+</mat-toolbar>

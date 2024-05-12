@@ -1,0 +1,25 @@
+.createPostDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5% 15%;
+}
+
+.createPostTitle {
+  width: 35%;
+  text-align: center;
+  margin: 2%;
+  color: #F2FDFF;
+  padding: 1%;
+}
+
+.createPostDiv form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  margin: 2%;
+}

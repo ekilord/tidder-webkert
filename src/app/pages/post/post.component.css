@@ -1,0 +1,29 @@
+.postTitle {
+  margin: 2%;
+  padding: 1%;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10%;
+}
+
+.commentForm button {
+  width: 10%;
+}
+
+.basicComments {
+  display: flex;
+  flex-direction: column;
+  margin: 3% 5% 5% 5%;
+}
+
+.basicComments mat-card {
+  margin: 1% 0;
+  padding: 1%;
+}
+
+mat-card-title, mat-card-content {
+  color: #F2FDFF;
+}

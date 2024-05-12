@@ -1,0 +1,10 @@
+.feedPostList {
+  display: flex;
+  flex-direction: column;
+  margin: 2% 3%;
+  padding: 1%;
+}
+
+mat-card-title, mat-card-content {
+  color: #F2FDFF;
+}

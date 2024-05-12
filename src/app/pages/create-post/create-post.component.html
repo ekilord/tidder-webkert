@@ -1,0 +1,27 @@
+ <div class="createPostDiv">
+    <mat-card class="createPostTitle">
+      <mat-card-title>
+        Create a new Post
+      </mat-card-title>
+    </mat-card>
+    <form (ngSubmit)="onCreatePressed()" [formGroup]="createPostFormGroup">
+      <mat-form-field>
+        <mat-error>
+          <div *ngIf="this.createPostFormGroup.get('title')?.dirty" class="form-errors">
+            <p *ngIf="this.createPostFormGroup.get('title')?.hasError('required')">The title field is mandatory!</p>
+          </div>
+        </mat-error>
+        <input type="text" name="title" placeholder="Title" formControlName="title" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-error>
+          <div *ngIf="this.createPostFormGroup.get('desc')?.dirty" class="form-errors">
+            <p *ngIf="this.createPostFormGroup.get('desc')?.hasError('required')">The description field is mandatory!</p>
+          </div>
+        </mat-error>
+        <input type="text" name="desc" placeholder="Description" formControlName="desc" matInput>
+      </mat-form-field>
+
+      <button mat-flat-button>Create</button>
+    </form>
+  </div>

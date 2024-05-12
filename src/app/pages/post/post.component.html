@@ -1,0 +1,34 @@
+<mat-card [ngClass]="titleClass">
+  <mat-card-title>
+    {{ post.title }}
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{ post.author }}
+  </mat-card-subtitle>
+  <mat-card-content>
+    {{ post.desc }}
+  </mat-card-content>
+</mat-card>
+
+<form (ngSubmit)="onCreatePressed()" [formGroup]="createCommentFormGroup" *ngIf="isLoggedIn" class="commentForm">
+  <mat-form-field>
+    <mat-error>
+      <div *ngIf="this.createCommentFormGroup.get('text')?.dirty" class="form-errors">
+        <p *ngIf="this.createCommentFormGroup.get('text')?.hasError('required')">A comment cannot be empty!</p>
+      </div>
+    </mat-error>
+    <textarea type="text" name="text" placeholder="Your comment" formControlName="text" matInput rows="4"></textarea>
+  </mat-form-field>
+
+  <button class="create-btn" mat-flat-button>Create</button>
+</form>
+<div [ngClass]="commentsClass">
+  <mat-card *ngFor="let comment of comments">
+    <mat-card-subtitle>
+      <p>{{ comment.author }}</p>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p>{{ comment.text }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
